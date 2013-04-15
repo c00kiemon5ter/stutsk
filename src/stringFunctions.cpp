@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <builtinFunctions.h>
 #include <boost/regex.hpp>
 #include <boost/algorithm/string.hpp>
+#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
 #include <cryptopp/md5.h> 
 #include <cryptopp/sha.h>
 #include <cryptopp/hex.h>
@@ -281,7 +282,7 @@ void BuiltIns::_f_md5(Context* Context)
 	   description: Returns the hash of `str` with MD5 algorithm (hex-encoded).
 	   notes: MD5 is considered broken for cryptographic use.
 	*/
-	CryptoPP::MD5 hash;
+	CryptoPP::Weak::MD5 hash;
 	Token token1 = stack_back_safe();
 	stutskStack.pop_back();
 
